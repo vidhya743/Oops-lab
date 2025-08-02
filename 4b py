@@ -1,0 +1,122 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class Queue:
+    def __init__(self):
+        self.front = None
+        self.rear = None
+
+    # Enqueue operation
+    def enqueue(self, value):
+        newNode = Node(value)
+        if self.rear is None:  # Queue is empty
+            self.front = self.rear = newNode
+        else:
+            self.rear.next = newNode
+            self.rear = newNode
+        print(f"{value} enqueued to queue.")
+
+    # Dequeue operation
+    def dequeue(self):
+        if self.front is None:
+            print("Queue is Empty!")
+            return
+        temp = self.front
+        self.front = self.front.next
+        if self.front is None:
+            self.rear = None
+        print(f"{temp.data} dequeued from queue.")
+
+    # Display operation
+    def display(self):
+        if self.front is None:
+            print("Queue is Empty!")
+            return
+        temp = self.front
+        print("Queue Elements:")
+        while temp:
+            print(f"{temp.data} --> ", end="")
+            temp = temp.next
+        print("NULL")
+
+# ----------- Menu-driven Program -------------
+if __name__ == "__main__":
+    q = Queue()
+
+    while True:
+        print("\nMenu:")
+        print("1. Enqueue")
+        print("2. Dequeue")
+        print("3. Display")
+        print("4. Exit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == '1':
+            value = input("Enter value to enqueue: ")
+            q.enqueue(value)
+        elif choice == '2':
+            q.dequeue()
+        elif choice == '3':
+            q.display()
+        elif choice == '4':
+            print("Exiting program.")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+            output
+            Menu:
+1. Enqueue
+2. Dequeue
+3. Display
+4. Exit
+Enter your choice: 1
+Enter value to enqueue: veg
+veg enqueued to queue.
+
+Menu:
+1. Enqueue
+2. Dequeue
+3. Display
+4. Exit
+Enter your choice: 1
+Enter value to enqueue: dog
+dog enqueued to queue.
+
+Menu:
+1. Enqueue
+2. Dequeue
+3. Display
+4. Exit
+Enter your choice: 1
+Enter value to enqueue: youu
+youu enqueued to queue.
+
+Menu:
+1. Enqueue
+2. Dequeue
+3. Display
+4. Exit
+Enter your choice: 2
+veg dequeued from queue.
+
+Menu:
+1. Enqueue
+2. Dequeue
+3. Display
+4. Exit
+Enter your choice: 3
+Queue Elements:
+dog --> youu --> NULL
+
+Menu:
+1. Enqueue
+2. Dequeue
+3. Display
+4. Exit
+Enter your choice: 4
+Exiting program.
+
+            
